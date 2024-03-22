@@ -1,0 +1,33 @@
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+  // You can implement login authentication here
+  
+  // For demonstration purposes, showing the dashboard if login is successful
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  displayDashboard(username); // You can pass user data to customize the dashboard
+});
+
+function displayDashboard(username) {
+  var dashboard = document.getElementById('dashboard');
+  // Sample dashboard content (cards showing health data)
+  var sampleData = [
+    { title: 'Heart Rate', value: '78 bpm' },
+    { title: 'Steps', value: '10500' },
+    { title: 'Calories Burned', value: '450 kcal' },
+    // Add more sample data as needed
+  ];
+  
+  sampleData.forEach(function(item) {
+    var card = document.createElement('div');
+    card.classList.add('card');
+    var content = `
+      <h3>${item.title}</h3>
+      <p>${item.value}</p>
+    `;
+    card.innerHTML = content;
+    dashboard.appendChild(card);
+  });
+}
